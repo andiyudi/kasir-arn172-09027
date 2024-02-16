@@ -72,6 +72,71 @@
     <script src="/assets/js/settings.js"></script>
     <script src="/assets/js/gleek.js"></script>
     <script src="/assets/js/styleSwitcher.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+    @if(session('success'))
+    <script>
+        var SweetAlert2Demo = function(){
+            var initDemos = function(){
+                swal({
+                    title: "{{ session('success') }}",
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    buttons: {
+                        confirm: {
+                            text: "confirm",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-success",
+                            closeModal: true,
+                        }
+                    }
+                });
+            };
+            return {
+                init: function() {
+                    initDemos();
+                },
+            };
+        }();
+        jquery(document).ready(function(){
+            SweetAlert2Demo.init();
+        });
+    </script>
+    @endif
+
+    @if(session('error'))
+    <script>
+        var SweetAlert2Demo = function(){
+            var initDemos = function(){
+                swal({
+                    title: "{{ session('error') }}",
+                    text: "{{ session('error') }}",
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: "confirm",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-success",
+                            closeModal: true,
+                        }
+                    }
+                });
+            };
+            return {
+                init: function() {
+                    initDemos();
+                },
+            };
+        }();
+        jquery(document).ready(function(){
+            SweetAlert2Demo.init();
+        });
+    </script>
+    @endif
 </body>
 </html>
 
