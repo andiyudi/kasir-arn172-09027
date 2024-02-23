@@ -28,19 +28,14 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Action</th>
+                                        <th>Jenis Barang</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data_user as $row)
+                                    @foreach ($data_jenis as $row)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $row->name }}</td>
-                                        <td>{{ $row->email }}</td>
-                                        <td>{{ $row->role }}</td>
+                                        <td>{{ $row->nama_jenis }}</td>
                                         <td>
                                             <a href="#modalEdit{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</a>
                                             <a href="#modalHapus{{ $row->id }}" data-toggle="modal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</a>
@@ -65,28 +60,12 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                 </button>
             </div>
-            <form action="/user/store" method="post">
+            <form action="/jenisbarang/store" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="name" id="" placeholder="Nama Lengkap..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" name="email" id="" placeholder="Email..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" name="password" id="" placeholder="Password..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Role</label>
-                        <select class="form-control" name="role" id="" required>
-                            <option value="" hidden>-- Pilih Role --</option>
-                            <option value="admin">Admin</option>
-                            <option value="kasir">Kasir</option>
-                        </select>
+                        <label for="">Jenis Barang</label>
+                        <input type="text" class="form-control" name="nama_jenis" id="" placeholder="Jenis Barang..." required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -97,7 +76,7 @@
         </div>
     </div>
 </div>
-@foreach ($data_user as $d)
+@foreach ($data_jenis as $d)
 <div class="modal fade" id="modalEdit{{ $d->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -106,27 +85,12 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                 </button>
             </div>
-            <form action="/user/update/{{ $d->id }}" method="post">
+            <form action="/jenisbarang/update/{{ $d->id }}" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nama Lengkap</label>
-                        <input type="text" value="{{ $d->name }}" class="form-control" name="name" id="" placeholder="Nama Lengkap..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" value="{{ $d->email }}" class="form-control" name="email" id="" placeholder="Email..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" name="password" id="" placeholder="Password..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Role</label>
-                        <select class="form-control" name="role" id="" required>
-                            <option <?php if ($d['role']=='admin') echo "selected"; ?> value="admin">Admin</option>
-                            <option <?php if ($d['role']=='kasir') echo "selected"; ?> value="kasir">Kasir</option>
-                        </select>
+                        <label for="">Jenis Barang</label>
+                        <input type="text" value="{{ $d->nama_jenis }}" class="form-control" name="nama_jenis" id="" placeholder="Jenis Barang..." required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -138,7 +102,7 @@
     </div>
 </div>
 @endforeach
-@foreach ($data_user as $c)
+@foreach ($data_jenis as $c)
 <div class="modal fade" id="modalHapus{{ $c->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -147,7 +111,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                 </button>
             </div>
-            <form action="/user/destroy/{{ $d->id }}" method="get">
+            <form action="/jenisbarang/destroy/{{ $d->id }}" method="get">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
