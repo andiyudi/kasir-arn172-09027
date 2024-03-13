@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DiskonController;
 use App\Http\Controllers\JenisBarangController;
 
 /*
@@ -40,6 +41,11 @@ use App\Http\Controllers\JenisBarangController;
     Route::post('/barang/store', [BarangController::class, 'store']);
     Route::post('/barang/update/{id}', [BarangController::class, 'update']);
     Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy']);
+
+    //Setting diskon
+    Route::get('/setdiskon', [DiskonController::class, 'index']);
+    Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
+
 // });
 
 // Route::get('/', [HomeController::class, 'index']);
