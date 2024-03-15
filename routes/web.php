@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DiskonController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\JenisBarangController;
 
 /*
@@ -45,6 +46,10 @@ use App\Http\Controllers\JenisBarangController;
     //Setting diskon
     Route::get('/setdiskon', [DiskonController::class, 'index']);
     Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
+
+    //Data Transaksi
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    Route::get('/transaksi/create', [TransaksiController::class, 'create']);
 
 // });
 

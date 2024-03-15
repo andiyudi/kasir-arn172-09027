@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('no_transaksi');
             $table->date('tgl_transaksi')->nullable();
             $table->integer('diskon')->nullable();
+            $table->bigInteger('kembalian')->nullable();
+            $table->bigInteger('uang_pembeli')->nullable();
             $table->bigInteger('total_bayar')->nullable();
             $table->timestamps();
         });
